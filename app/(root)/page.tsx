@@ -23,11 +23,11 @@ export default async function Home({
       <section className="pink_container">
         <h1 className="heading">
           Temukan Impian mu, <br />
-          Hanya untuk di injak sama orang berduit
+          BERSAMA SCHOLLY
         </h1>
 
         <p className="sub-heading !max-w-3xl">
-          Temukan Impian, Raih Beasiswa, dan jadi boneka bagi orang berduit.
+          "Ilmu Adalah Kunci,Scholly Adalah Gerbangnya".
         </p>
 
         <SearchForm query={query} />
