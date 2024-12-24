@@ -70,7 +70,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               dangerouslySetInnerHTML={{ __html: parsedContent }}
             />
           ) : (
-            <p className="no-result">No details provided</p>
+            <p className="no-result">{post.pitch}</p>
           )}
         </div>
 

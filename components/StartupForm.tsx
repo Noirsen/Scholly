@@ -10,7 +10,8 @@ import { link } from "fs";
 import { formSchema } from "@/lib/validation";
 import { unknown, z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { createPitch } from "@/lib/action";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -30,18 +31,16 @@ const StartupForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      console.log(formValues);
+      const result = await createPitch(prevState, formData, pitch);
 
-      //const result = await createIdea(prevState, formData, pitch);
+      if (result.status == "SUCCESS") {
+        toast({
+          title: "Success",
+          description: "Your schollarship has been created successfully",
+        });
 
-      //if (result.status == "SUCCESS") {
-      //toast({
-      //title: "Success",
-      //description: "Your schollarship has been created successfully",
-      //});
-
-      //router.push(`/startup/${result._id}`);
-      //}
+        router.push(`/startup/${result._id}`);
+      }
 
       return result;
     } catch (error) {
